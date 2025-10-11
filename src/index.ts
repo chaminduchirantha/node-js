@@ -1,10 +1,12 @@
 import express, {Application} from 'express';
 import userRoutes from './routes/userRouts';
+import itemRouts from './routes/itemRouts';
 import mongoose from "mongoose"
 
 const App: Application = express();
 App.use(express.json());
 App.use('/api/v1/user', userRoutes);
+App.use('/api/v1/item', itemRouts);
 
 const mongo  =  mongoose.connect('mongodb://localhost:27017/userDB')
 .then(() => {
@@ -14,5 +16,5 @@ const mongo  =  mongoose.connect('mongodb://localhost:27017/userDB')
 });
 
 App.listen(5000, () => {
-    console.log("Server is running on port 3000");
+    console.log("Server is running on port 5000");
 });
